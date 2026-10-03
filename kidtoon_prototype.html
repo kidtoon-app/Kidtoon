@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KidToon</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#f7f8fc;color:#202336}
+header{background:white;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px #00000010;position:sticky;top:0;z-index:2}
+.logo{font-size:28px;font-weight:800}.logo span{font-size:30px}
+.parent{border:0;border-radius:20px;padding:9px 15px;background:#eee;cursor:pointer}
+main{max-width:1000px;margin:auto;padding:28px 18px}
+.hero{background:#fff;border-radius:24px;padding:28px;text-align:center}
+.hero h1{font-size:34px;margin:8px 0}.hero p{color:#62677b}
+.search{width:100%;max-width:600px;padding:15px 18px;border:1px solid #ddd;border-radius:16px;font-size:16px}
+h2{margin-top:30px}
+.cats{display:flex;gap:10px;overflow:auto;padding-bottom:5px}.cat{white-space:nowrap;border:0;padding:11px 16px;border-radius:20px;background:white;cursor:pointer;box-shadow:0 2px 8px #0000000c}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 4px 15px #00000010}.thumb{height:125px;display:flex;align-items:center;justify-content:center;font-size:52px;background:#e9edff}
+.card .info{padding:14px}.card h3{margin:0 0 7px;font-size:17px}.meta{font-size:13px;color:#777}
+.watch{display:block;margin-top:12px;text-align:center;text-decoration:none;background:#222;color:white;padding:10px;border-radius:12px}
+footer{text-align:center;color:#888;padding:30px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🎨 KidToon</div>
+  <button class="parent" onclick="alert('Espace parent : bientôt disponible')">👨‍👩‍👧 Espace parent</button>
+</header>
+
+<main>
+<section class="hero">
+  <div style="font-size:48px">🧸🌈</div>
+  <h1>Découvre des dessins animés</h1>
+  <p>Une façon simple pour les parents de trouver des vidéos pour les enfants.</p>
+  <input id="search" class="search" placeholder="🔎 Rechercher un dessin animé..." oninput="filterCards()">
+</section>
+
+<h2>Catégories</h2>
+<div class="cats">
+  <button class="cat">🦁 Animaux</button><button class="cat">🚗 Véhicules</button>
+  <button class="cat">🎵 Comptines</button><button class="cat">📚 Éducatif</button>
+  <button class="cat">🧙 Histoires</button><button class="cat">🌈 Aventures</button>
+</div>
+
+<h2>À découvrir</h2>
+<div class="grid" id="grid">
+  <article class="card" data-title="Les animaux rigolos">
+    <div class="thumb">🦁</div><div class="info"><h3>Les animaux rigolos</h3><div class="meta">🦁 Animaux • 8 min</div><a class="watch" href="https://www.youtube.com/" target="_blank">▶ Voir sur YouTube</a></div>
+  </article>
+  <article class="card" data-title="La petite voiture">
+    <div class="thumb">🚗</div><div class="info"><h3>La petite voiture</h3><div class="meta">🚗 Véhicules • 6 min</div><a class="watch" href="https://www.youtube.com/" target="_blank">▶ Voir sur YouTube</a></div>
+  </article>
+  <article class="card" data-title="Comptines du matin">
+    <div class="thumb">🎵</div><div class="info"><h3>Comptines du matin</h3><div class="meta">🎵 Comptines • 12 min</div><a class="watch" href="https://www.youtube.com/" target="_blank">▶ Voir sur YouTube</a></div>
+  </article>
+  <article class="card" data-title="Apprendre les couleurs">
+    <div class="thumb">🌈</div><div class="info"><h3>Apprendre les couleurs</h3><div class="meta">📚 Éducatif • 7 min</div><a class="watch" href="https://www.youtube.com/" target="_blank">▶ Voir sur YouTube</a></div>
+  </article>
+</div>
+</main>
+<footer>KidToon — prototype • Les vidéos réelles seront ajoutées dans une prochaine étape.</footer>
+
+<script>
+function filterCards(){
+ const q=document.getElementById('search').value.toLowerCase();
+ document.querySelectorAll('.card').forEach(c=>{
+   c.style.display=c.dataset.title.toLowerCase().includes(q)?'block':'none';
+ });
+}
+</script>
+</body>
+</html>
