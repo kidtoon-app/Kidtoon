@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KidToon</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f7ff;color:#25283d}header{background:#fff;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0000000d}.logo{font-size:27px;font-weight:900}.parent{border:0;border-radius:20px;padding:10px 14px;background:#eef0ff;font-weight:700;color:#35395c}main{max-width:1000px;margin:auto;padding:22px 16px 40px}.hero{background:linear-gradient(135deg,#fff3ca,#e7f8ff);border-radius:26px;padding:28px 20px;text-align:center}.hero .emoji{font-size:52px}.hero h1{font-size:32px;margin:8px 0}.hero p{font-size:17px;line-height:1.45;margin:8px auto 18px;max-width:650px;color:#555b75}.search{width:100%;max-width:600px;padding:15px 18px;border:2px solid #fff;border-radius:18px;font-size:17px;box-shadow:0 3px 12px #0000000d}.section-title{margin:28px 0 14px;font-size:24px}.cats{display:flex;gap:10px;overflow-x:auto;padding-bottom:5px}.cat{border:0;border-radius:18px;padding:12px 16px;background:#fff;white-space:nowrap;font-size:16px;font-weight:700;box-shadow:0 3px 12px #0000000b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}.card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 5px 18px #0000000c}.thumb{height:135px;display:flex;align-items:center;justify-content:center;font-size:64px;background:#f0f4ff}.info{padding:16px}.info h3{margin:0 0 7px;font-size:20px}.info p{margin:0;color:#656b82}.watch{display:block;margin-top:13px;padding:11px;border-radius:14px;text-align:center;text-decoration:none;background:#5258d8;color:white;font-weight:800}.notice{margin-top:28px;background:#fff;border-radius:20px;padding:18px;line-height:1.45;color:#555b75}footer{text-align:center;color:#777d94;padding:28px 15px 40px}@media(max-width:500px){.hero h1{font-size:28px}.grid{grid-template-columns:1fr 1fr}.thumb{height:110px}.info h3{font-size:17px}.info p{font-size:14px}}@media(max-width:370px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="logo">🎨 KidToon</div><button class="parent" onclick="alert('🔒 Espace parent : cette fonction pourra être ajoutée dans une prochaine version.')">🔒 Espace parent</button></header>
+<main>
+<section class="hero"><div class="emoji">🧸🌈</div><h1>Des dessins animés pour les 3–8 ans</h1><p>Un espace simple et coloré pour retrouver facilement des vidéos adaptées aux enfants.</p><input id="search" class="search" placeholder="🔎 Rechercher une vidéo…" oninput="filterCards()"></section>
+<h2 class="section-title">Catégories</h2>
+<div class="cats"><button class="cat" onclick="choose('animaux')">🦁 Animaux</button><button class="cat" onclick="choose('vehicules')">🚗 Véhicules</button><button class="cat" onclick="choose('comptines')">🎵 Comptines</button><button class="cat" onclick="choose('histoires')">🧙 Histoires</button><button class="cat" onclick="choose('educatif')">📚 Éducatif</button><button class="cat" onclick="choose('')">✨ Tout voir</button></div>
+<h2 class="section-title">À découvrir</h2>
+<div class="grid" id="grid">
+<article class="card" data-title="animaux lion animaux rigolos"><div class="thumb">🦁</div><div class="info"><h3>Les animaux rigolos</h3><p>Découvre le monde des animaux.</p><a class="watch" href="https://www.youtube.com/watch?v=AdZoUkjB83s">▶ Regarder</a></div></article>
+<article class="card" data-title="vehicules voiture petite voiture"><div class="thumb">🚗</div><div class="info"><h3>La petite voiture</h3><p>Une aventure pleine de roues.</p><a class="watch" href="https://www.youtube.com/watch?v=zjnx_Du41Ao">▶ Regarder</a></div></article>
+<article class="card" data-title="comptines musique matin"><div class="thumb">🎵</div><div class="info"><h3>Comptines du matin</h3><p>Chante et danse en musique.</p><a class="watch" href="https://www.youtube.com/watch?v=2tkQPGlc-2Q">▶ Regarder</a></div></article>
+<article class="card" data-title="educatif couleurs apprendre arc en ciel"><div class="thumb">🌈</div><div class="info"><h3>Apprendre les couleurs</h3><p>Les couleurs en s'amusant.</p><a class="watch" href="https://www.youtube.com/watch?v=J_O424Z8vQs">▶ Regarder</a></div></article>
+<article class="card" data-title="histoires magie histoire dragon"><div class="thumb">🧙</div><div class="info"><h3>L'histoire magique</h3><p>Une petite histoire à écouter.</p><a class="watch" href="#" onclick="demo(event)">▶ Regarder</a></div></article>
+<article class="card" data-title="educatif chiffres apprendre compter"><div class="thumb">🔢</div><div class="info"><h3>J'apprends à compter</h3><p>Les premiers chiffres en jouant.</p><a class="watch" href="#" onclick="demo(event)">▶ Regarder</a></div></article>
+</div>
+<div class="notice">👨‍👩‍👧 <strong>Pour les parents :</strong> KidToon est actuellement un prototype. Les liens vidéo pourront ensuite être sélectionnés et ajoutés par les parents.</div>
+</main>
+<footer>KidToon • Prototype pour enfants de 3 à 8 ans</footer>
+<script>
+function filterCards(){const q=document.getElementById('search').value.toLowerCase().trim();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.title.toLowerCase().includes(q)?'block':'none')}
+function choose(q){document.getElementById('search').value=q;filterCards();document.getElementById('grid').scrollIntoView({behavior:'smooth',block:'start'})}
+function demo(e){e.preventDefault();alert('🎬 Vidéo de démonstration. Nous ajouterons ensuite les vraies vidéos choisies pour KidToon.')}
+</script>
+</body>
+</html>
